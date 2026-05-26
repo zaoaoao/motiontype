@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <title>video tree</title>
+</head>
+<style>
+  @font-face {
+    font-family: "a";
+    src: url("./fonts/ACaslon-Semibold.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "b";
+    src: url("./fonts/LibreFranklin-Black.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "c";
+    src: url("./fonts/AlbertusMT.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "d";
+    src: url("./fonts/bb-bookARegular.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "e";
+    src: url("./fonts/BellGothicStd-Light.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "f";
+    src: url("./fonts/DiamondBodoniStdRegular.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "g";
+    src: url("./fonts/FFMetaProBook.TTF") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "h";
+    src: url("./fonts/gotham-rounded-bold.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "i";
+    src: url("./fonts/LazybonesEFRegular.otf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "j";
+    src: url("./fonts/LinotypeAlphabat.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "k";
+    src: url("./fonts/MagnoSerifTrial-Extrabold-BF63fd72c915473.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "l";
+    src: url("./fonts/GothamNarrow-XLight.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+  @font-face {
+    font-family: "m";
+    src: url("./fonts/VegasW00Regular.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+@font-face {
+    font-family: "n";
+    src: url("./fonts/ChicRegular.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+  @font-face {
+    font-family: "o";
+    src: url("./fonts/gunplay3d.otf") format("opentype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+  @font-face {
+    font-family: "p";
+    src: url("./fonts/KingthingsPetrock.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+  @font-face {
+    font-family: "q";
+    src: url("./fonts/LucidaTypewriter.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+
+  }
+
+
+  video {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: auto;
+    height: 100%;
+    z-index: -100;
+
+
+  }
+
+  .main {
+    margin: 1em;
+    position: relative;
+    top: 0%;
+    left: 0%;
+  }
+
+select {
+  position: fixed;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-size: 35px;
+
+  color: #ffffff;
+
+  cursor: pointer;
+font-family: a, serif;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: text-shadow 0.5s;
+}
+
+select:hover {
+  
+
+text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1), 1px 1px 1px rgba(255, 255, 255, 0.5);
+
+
+}
+option {
+  background: white;
+  color: black;
+    font-size: 15px;
+
+}
+optgroup {
+  font-size: 15px;
+}
+
+body{
+  overflow: hidden;
+}
+
+@media (max-width: 720px) {
+video{
+  width: 150%;
+  height:auto;
+left: 50%;
+transform: translate(-50%, 0)
+
+;}
+  select {
+    top: 90% !important;
+    left: 20px !important;
+    position: fixed;
+    font-size: 20px;
+  }
+body{
+  background-color: black;
+}
+       
+    }
+
+
+</style>
+<head>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div id="container" class="main">
+   
+  </div>
+  <video id="vd" width="500" pause loop>
+    <source src="00.mp4" type="video/mp4">
+  </video>
+
+
+
+
+
+  <script>
+
+    const video = document.getElementById("vd");
+
+    video.addEventListener("mouseup", () => {
+      video.pause();
+    });
+
+    video.addEventListener("mousedown", () => {
+      video.play();
+    });
+
+
+function makeNewPosition() {
+            const h = window.innerHeight;
+            const w = window.innerWidth;
+
+            return {
+                top: Math.random() * (h-20),
+                left: Math.random() * (w/3)
+            };
+        }
+
+    const data = [
+      { title: "e-flux", nr: "", type: "issue", date: "2025" },
+
+      { title: "about", nr: "00", type: "article" },
+{ title: "issue 163", nr: "", type: "issue", date: "2025" },
+
+      { title: "Editorial: “Intellectuals”", nr: "", type: "article" },
+      { title: "Speculating on an Unasked Question", nr: "7", type: "article" },
+      { title: "The Public Intellectual in History", nr: "", type: "article" },
+      { title: "In Darkness and Secrecy: On Conspiratorial Intellectualism", nr: "", type: "article" },
+      { title: "A Toast to Femmunism", nr: "", type: "article" },
+      { title: "The Algorithm and the Intellectual", nr: "", type: "article" },
+      { title: "A Fragment, a Message in a Bottle, a Toolbox", nr: "", type: "article" },
+      { title: "Civilization and Its Incontinence: On the Closed Effluvial Loop of Intellectual Labor", nr: "", type: "article" },
+       { title: "The Useful Narcissist", nr: "", type: "article" },
+      { title: "The Angel of History Goes to the Front", nr: "", type: "article" },
+      { title: "Critique Is Over, Morality Is Dead, and Surreal Utopias Are Where It’s At", nr: "", type: "article" },
+
+
+
+      { title: "issue 162", nr: "", type: "issue", date: "2025" },
+
+      { title: "Editorial: “Operativism: Labor, Automation, Agitation”", nr: "", type: "article" },
+      { title: "to scientize agitation and politicize science", nr: "11", type: "article" },
+      { title: "Beneath the Information, the Operation: Harun Farocki and the Work of Images", nr: "", type: "article" },
+      { title: "War Metabolism and Operative Film", nr: "", type: "article" },
+      { title: "Fact and Fetish", nr: "", type: "article" },
+      { title: "The Social Research on Operation at the Central Institute of Labor", nr: "", type: "article" },
+      { title: "A Stack of Orders: On the Operative Language of Aleksei Gastev", nr: "", type: "article" },
+      { title: "AI’s AURA: Aesthetic, Ubiquitous, Regimented Automation", nr: "", type: "article" },
+
+      { title: "issue 161", nr: "", type: "issue", date: "2025" },
+            { title: "After Exhaustion, a Door", nr: "22", type: "article" },
+
+      { title: "The University Within the Limits of Automated Knowledge", nr: "", type: "article" },
+      { title: "Fantasies at Work: An Introduction to Fantasies of the People", nr: "", type: "article" },
+      { title: "Epic Fantasies: An Introduction to Fantasies of the People", nr: "", type: "article" },
+      { title: "Outline for a Communist Infrastructure in the Arts: Interview with Aurélien Catin", nr: "", type: "article" },
+      { title: "Science Fiction: Definitions Serve to Be Destroyed", nr: "", type: "article" },
+      { title: "Play Cow", nr: "", type: "article" },
+
+
+    ];
+
+    function createTree() {
+
+      const select = document.createElement("select");
+                const firstPosition = makeNewPosition();
+      let currentGroup = null;
+
+      data.forEach(list => {
+
+        // issue
+        if (list.type === "issue") {
+
+          currentGroup = document.createElement("optgroup");
+
+          currentGroup.label = list.title;
+
+          select.appendChild(currentGroup);
+          select.style.top = firstPosition.top + 'px';
+                select.style.left = firstPosition.left + 'px';
+                select.style.position = "fixed";
+select.style.fontFamily=String.fromCharCode(
+  97 + Math.floor(Math.random() * 17)
+);
+        } else {
+
+          const option = document.createElement("option");
+
+          option.textContent = list.title;
+
+          option.value = list.nr;
+          currentGroup.appendChild(option);
+        }
+      });
+
+      select.addEventListener("change", function () {
+                const firstPosition = makeNewPosition();
+
+        video.src = this.value + ".mp4";
+         select.style.top = firstPosition.top + 'px';
+                select.style.left = firstPosition.left + 'px';
+                select.style.position = "fixed";
+                select.style.fontFamily=String.fromCharCode(
+  97 + Math.floor(Math.random() * 13)
+);
+
+
+      });
+
+      document.getElementById("container").prepend(select);
+    }
+    createTree();
+
+  </script>
+
+</body>
+
+</html>
