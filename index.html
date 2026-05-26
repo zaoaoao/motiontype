@@ -242,13 +242,13 @@ body{
 
     const video = document.getElementById("vd");
 
-    video.addEventListener("mouseup", () => {
-      video.pause();
-    });
+    video.addEventListener("pointerdown", () => {
+  video.play();
+});
 
-    video.addEventListener("mousedown", () => {
-      video.play();
-    });
+video.addEventListener("pointerup", () => {
+  video.pause();
+});
 
 
 function makeNewPosition() {
